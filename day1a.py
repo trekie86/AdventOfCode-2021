@@ -1,5 +1,5 @@
-file1 = open('data.txt', 'r')
-lines = file1.readlines()
+with open("data.txt") as file:
+    lines = file.readlines()
 
 count = 0
 previous = lines[0]

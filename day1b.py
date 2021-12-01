@@ -1,8 +1,8 @@
-file1 = open('data.txt', 'r')
-Lines = file1.readlines()
+with open("data.txt") as file:
+    lines = file.readlines()
 list_of_nums = []
 
-for line in Lines:
+for line in lines:
     list_of_nums.append(line.strip())
 count = len(list_of_nums) - 2
 datatrips = []
