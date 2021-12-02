@@ -4,12 +4,9 @@ with open("data.txt") as file:
 horizontal = 0
 depth = 0
 aim = 0
-forward = "forward"
-down = "down"
-up = "up"
 
 for line in lines:
-    if forward in line:
+    if "forward" in line:
         for char in line.split():
             if char.isdigit():
                 num = (int(char))
@@ -17,13 +14,13 @@ for line in lines:
         add_depth = aim * num
         depth += add_depth
 
-    if down in line:
+    if "down" in line:
         for char in line.split():
             if char.isdigit():
                 num = (int(char))
         aim += num
 
-    if up in line:
+    if "up" in line:
         for char in line.split():
             if char.isdigit():
                 num = (int(char))

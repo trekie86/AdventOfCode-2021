@@ -3,24 +3,21 @@ with open("data.txt") as file:
 
 start_horizontal = 0
 start_depth = 0
-forward = "forward"
-down = "down"
-up = "up"
 
 for line in lines:
-    if forward in line:
+    if "forward" in line:
         for char in line.split():
             if char.isdigit():
                 num = (int(char))
         start_horizontal += num
 
-    if down in line:
+    if "down" in line:
         for char in line.split():
             if char.isdigit():
                 num = (int(char))
         start_depth += num
 
-    if up in line:
+    if "up" in line:
         for char in line.split():
             if char.isdigit():
                 num = (int(char))
