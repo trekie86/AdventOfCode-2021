@@ -53,7 +53,7 @@ for each in bingo_numbers:
             a = 0
             # Loop through all digits
             while a < 5:
-                # If match, flip tracking bool to true
+                # If match found, flip tracking bool to true
                 if each == bingo_cards[c][b][a][0]:
                     bingo_cards[c][b][a][1] = 1
                 a += 1
