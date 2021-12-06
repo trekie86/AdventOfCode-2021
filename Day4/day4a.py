@@ -45,7 +45,7 @@ winning_num = 0
 #print(bingo_cards)
 
 for each in bingo_numbers:
-    while c < 2:
+    while c < len(bingo_cards):
         if bingo:
             break
         a = 0
@@ -69,14 +69,16 @@ for each in bingo_numbers:
                 print("Vertical Line:")
                 print(bingo_cards[c][0][a] + bingo_cards[c][1][a] + bingo_cards[c][2][a] + bingo_cards[c][3][a] + bingo_cards[c][4][a])
                 print(bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1])
-                if bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + bingo_cards[c][b][4][1] == 5 or bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5:
-                    bingo = True
-                    print("**********BINGO!***********")
-                    #print(bingo_cards[c])
-                    winning_num = bingo_cards[c][b][a][0]
-                    break
                 a += 1
             b += 1
+        if bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + \
+                bingo_cards[c][b][4][1] == 5 or bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + \
+                bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5:
+            bingo = True
+            print("**********BINGO!***********")
+            # print(bingo_cards[c])
+            winning_num = bingo_cards[c][b][a][0]
+            break
         c += 1
     a = 0
     b = 0
