@@ -71,18 +71,18 @@ for each in bingo_numbers:
                 print(bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1])
                 a += 1
             b += 1
-        if bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + \
-                bingo_cards[c][b][4][1] == 5 or bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + \
-                bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5:
-            bingo = True
-            print("**********BINGO!***********")
-            # print(bingo_cards[c])
-            winning_num = bingo_cards[c][b][a][0]
-            break
         c += 1
     a = 0
     b = 0
     c = 0
+    if bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + \
+            bingo_cards[c][b][4][1] == 5 or bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + \
+            bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5:
+        bingo = True
+        print("**********BINGO!***********")
+        # print(bingo_cards[c])
+        winning_num = bingo_cards[c][b][a][0]
+        break
 # print(bingo_cards[c])
 uncalled = 0
 for number_list in bingo_cards[c]:
