@@ -21,10 +21,14 @@ bingo_card = []
 
 for element in all_data:
     element = element.strip()
+    # print(element)
     if element == "":
         temp_card = bingo_card
-        bingo_cards.append(temp_card)
-        bingo_card.clear()
+        # print("Temp_Card:")
+        # print(temp_card)
+        if temp_card:
+            bingo_cards.append(temp_card)
+        bingo_card = []
         continue
     bingo_card.append(parse_line(element))
 
@@ -35,7 +39,10 @@ i = 0
 bingo = False
 winning_num = 0
 
-print(bingo_numbers)
+#print("Bingo Numbers:")
+#print(bingo_numbers)
+#print("Bingo Cards:")
+#print(bingo_cards)
 
 for each in bingo_numbers:
     while c < 2:
@@ -56,12 +63,16 @@ for each in bingo_numbers:
                     print("Match")
                 else:
                     print("No Match")
+                print("Horizonal Line:")
+                print(bingo_cards[c][b][0] + bingo_cards[c][b][1] + bingo_cards[c][b][2] + bingo_cards[c][b][3] + bingo_cards[c][b][4])
                 print(bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + bingo_cards[c][b][4][1])
-                if bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + bingo_cards[c][b][4][1] == 5\
-                        or bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5:
+                print("Vertical Line:")
+                print(bingo_cards[c][0][a] + bingo_cards[c][1][a] + bingo_cards[c][2][a] + bingo_cards[c][3][a] + bingo_cards[c][4][a])
+                print(bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1])
+                if bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + bingo_cards[c][b][4][1] == 5 or bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5:
                     bingo = True
                     print("**********BINGO!***********")
-                    print(bingo_cards[c][b])
+                    #print(bingo_cards[c])
                     winning_num = bingo_cards[c][b][a][0]
                     break
                 a += 1
@@ -70,11 +81,20 @@ for each in bingo_numbers:
     a = 0
     b = 0
     c = 0
+# print(bingo_cards[c])
+uncalled = 0
+for number_list in bingo_cards[c]:
+    print(number_list)
+    for number in number_list:
+        if number[1] == 0:
+            # print("Uncalled: " + str(uncalled))
+            # print("Number: " + str(number[0]))
+            uncalled += number[0]
 
-#print(bingo_cards)
-
-
-print(sum_total)
+print("Last number called:")
 print(winning_num)
-total = sum_total * winning_num
+print("Total of uncalled numbers on card:")
+print(uncalled)
+total = winning_num * uncalled
+print("Total:")
 print(total)
