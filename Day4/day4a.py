@@ -14,21 +14,16 @@ with open('data.txt') as data:
 bingo_numbers = []
 bingo_cards = []
 bingo_card = []
-a = 0
-b = 0
-c = 0
-i = 0
 bingo = False
 winning_num = 0
 
 # Cut out line one and add to Bingo call numbers list
 first_line = all_data[0].strip()
-del all_data[0]
 for num in first_line.split(","):
     bingo_numbers.append(int(num))
 
 # Loop through Bingo Card data and add to nested lists
-for element in all_data:
+for element in all_data[2:]:
     element = element.strip()
     if element == "":
         temp_card = bingo_card
@@ -37,43 +32,36 @@ for element in all_data:
         bingo_card = []
         continue
     bingo_card.append(parse_line(element))
+bingo_cards.append(temp_card)
 
 # Loop through all the Bingo numbers and search the Bingo cards for matches
 for each in bingo_numbers:
     # Loop through all cards
-    while c < len(bingo_cards):
+    for c in range(len(bingo_cards)):
         if bingo:
             break
-        a = 0
-        b = 0
         # Loop through all rows
-        while b < 5:
+        for b in range(5):
             if bingo:
                 break
-            a = 0
             # Loop through all digits
-            while a < 5:
+            for a in range(5):
                 # If match found, flip tracking bool to true
                 if each == bingo_cards[c][b][a][0]:
                     bingo_cards[c][b][a][1] = 1
-                a += 1
-            b += 1
-        c += 1
-    a = 0
-    b = 0
-    c = 0
     # Check for and stop when Bingo complete
-    if bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + \
-            bingo_cards[c][b][4][1] == 5 or bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + \
-            bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5:
-        bingo = True
-        print("**********BINGO!***********")
-        winning_num = bingo_cards[c][b][a][0]
-        break
+                if (bingo_cards[c][b][0][1] + bingo_cards[c][b][1][1] + bingo_cards[c][b][2][1] + bingo_cards[c][b][3][1] + \
+                        bingo_cards[c][b][4][1]) == 5 or (bingo_cards[c][0][a][1] + bingo_cards[c][1][a][1] + \
+                        bingo_cards[c][2][a][1] + bingo_cards[c][3][a][1] + bingo_cards[c][4][a][1] == 5):
+                    bingo = True
+                    print("**********BINGO!***********")
+                    winning_num = bingo_cards[c][b][a][0]
+                    winning_card = c
+                    break
 
 # Add up uncalled numbers on winning card
 uncalled = 0
-for number_list in bingo_cards[c]:
+for number_list in bingo_cards[winning_card]:
     print(number_list)
     for number in number_list:
         if number[1] == 0:
